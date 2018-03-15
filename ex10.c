@@ -3,34 +3,36 @@
 
 int main(int argc, char *argv[])
 {
-  if (argc != 2) {
-    printf("ERROR: You need one argument.\n");
+  if (argc == 1) {
+    printf("ERROR: You need at least one argument.\n");
     return 1;
   }
 
-  int i;
+  int i, j;
 
-  for (i = 0; argv[1][i] != '\0'; i++) {
-    char letter = tolower(argv[1][i]);
+  for (i = 1; i < argc; i++) {
+    for (j = 0; argv[i][j] != '\0'; j++) {
+      char letter = tolower(argv[i][j]);
 
-    switch (letter) {
-    case 'a':
-    case 'e':
-    case 'i':
-    case 'o':
-    case 'u':
-      printf("%d: '%c'\n", i, toupper(letter));
-      break;
+      switch (letter) {
+      case 'a':
+      case 'e':
+      case 'i':
+      case 'o':
+      case 'u':
+        printf("%d: '%c'\n", j, toupper(letter));
+        break;
 
-    case 'y':
-      if (i > 2) {
-        // it's only sometimes Y
-        printf("%d: '%c'\n", i, toupper(letter));
+      case 'y':
+        if (j > 2) {
+          // it's only sometimes Y
+          printf("%d: '%c'\n", j, toupper(letter));
+        }
+        break;
+
+      default:
+        printf("%d: %c is not a vowel\n", j, toupper(letter));
       }
-      break;
-
-    default:
-      printf("%d: %c is not a vowel\n", i, toupper(letter));
     }
   }
 
