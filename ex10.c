@@ -15,34 +15,22 @@ int main(int argc, char *argv[])
 
     switch (letter) {
     case 'a':
-      printf("%d: 'A'\n", i);
-      break;
-
     case 'e':
-      printf("%d: 'E'\n", i);
-      break;
-
     case 'i':
-      printf("%d: 'I'\n", i);
-      break;
-
     case 'o':
-      printf("%d: 'O'\n", i);
-      break;
-
     case 'u':
-      printf("%d: 'U'\n", i);
+      printf("%d: '%c'\n", i, toupper(letter));
       break;
 
     case 'y':
       if (i > 2) {
         // it's only sometimes Y
-        printf("%d: 'Y'\n", i);
+        printf("%d: '%c'\n", i, toupper(letter));
       }
       break;
 
     default:
-      printf("%d: %c is not a vowel\n", i, letter);
+      printf("%d: %c is not a vowel\n", i, toupper(letter));
     }
   }
 
