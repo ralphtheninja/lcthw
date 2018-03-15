@@ -9,29 +9,28 @@ int main(int argc, char *argv[])
   }
 
   int i, j;
+  char letter;
 
   for (i = 1; i < argc; i++) {
-    for (j = 0; argv[i][j] != '\0'; j++) {
-      char letter = tolower(argv[i][j]);
-
+    for (j = 0; letter = tolower(argv[i][j]), letter != '\0'; j++) {
       switch (letter) {
-      case 'a':
-      case 'e':
-      case 'i':
-      case 'o':
-      case 'u':
-        printf("%d: '%c'\n", j, toupper(letter));
-        break;
-
-      case 'y':
-        if (j > 2) {
-          // it's only sometimes Y
+        case 'a':
+        case 'e':
+        case 'i':
+        case 'o':
+        case 'u':
           printf("%d: '%c'\n", j, toupper(letter));
-        }
-        break;
+          break;
 
-      default:
-        printf("%d: %c is not a vowel\n", j, toupper(letter));
+        case 'y':
+          if (j > 2) {
+            // it's only sometimes Y
+            printf("%d: '%c'\n", j, toupper(letter));
+          }
+          break;
+
+        default:
+          printf("%d: %c is not a vowel\n", j, toupper(letter));
       }
     }
   }
