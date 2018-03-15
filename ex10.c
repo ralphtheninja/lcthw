@@ -1,9 +1,5 @@
 #include <stdio.h>
-
-char lower(char c)
-{
-  return c < 'a' ? c + 32 : c;
-}
+#include <ctype.h>
 
 int main(int argc, char *argv[])
 {
@@ -15,7 +11,7 @@ int main(int argc, char *argv[])
   int i;
 
   for (i = 0; argv[1][i] != '\0'; i++) {
-    char letter = lower(argv[1][i]);
+    char letter = tolower(argv[1][i]);
 
     switch (letter) {
     case 'a':
