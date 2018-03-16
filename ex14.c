@@ -3,7 +3,6 @@
 #include <string.h>
 
 // forward declarations
-int can_print_it(char ch);
 void print_letters(int length, char *arg);
 
 void print_arguments(int argc, char *argv[])
@@ -22,17 +21,12 @@ void print_letters(int length, char *arg)
   for (i = 0; i < length; i++) {
     char ch = arg[i];
 
-    if (can_print_it(ch)) {
+    if (isprint(ch)) {
       printf("'%c' == %d ", ch, ch);
     }
   }
 
   printf("\n");
-}
-
-int can_print_it(char ch)
-{
-  return isalnum(ch) || isblank(ch);
 }
 
 int main(int argc, char *argv[])
