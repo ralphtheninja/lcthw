@@ -32,7 +32,7 @@ void print_letters(int length, char *arg)
 
 int can_print_it(char ch)
 {
-  return isalpha(ch) || isblank(ch);
+  return isalnum(ch) || isblank(ch);
 }
 
 int main(int argc, char *argv[])
