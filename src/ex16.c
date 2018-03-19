@@ -16,7 +16,7 @@ struct Person {
 struct Person*
 Person_create(char *name, int age, int height, int weight)
 {
-  struct Person *who = malloc(sizeof(struct Person));
+  struct Person *who = malloc(sizeof (struct Person));
   assert(who != NULL);
 
   who->name = strdup(name);
@@ -54,6 +54,8 @@ void Person_print(struct Person *who)
  */
 int main(int argc, char *argv[])
 {
+  printf("sizeof (struct Person): %ld\n", sizeof (struct Person));
+
   // make two people structures
   struct Person *joe = Person_create("Joe Alex", 32, 64, 140);
   struct Person *frank = Person_create("Frank Blank", 20, 72, 180);
