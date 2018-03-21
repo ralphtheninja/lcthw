@@ -95,12 +95,12 @@ void Database_write(struct Connection *conn)
   rewind(conn->file);
 
   int rc = fwrite(conn->db, sizeof (struct Database), 1, conn->file);
-  if (rc != -1) {
+  if (rc != 1) {
     die("Failed to write database.");
   }
 
   rc = fflush(conn->file);
-  if (rc != -1) {
+  if (rc != 0) {
     die("Cannot flush database.");
   }
 }
