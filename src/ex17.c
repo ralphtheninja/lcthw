@@ -6,14 +6,6 @@
 #define MAX_DATA 512
 #define MAX_ROWS 100
 
-void __todo(const char *message, int line)
-{
-  printf("TODO: %s, line: %d\n", message, line);
-  exit(1);
-}
-
-#define todo(x) __todo(x, __LINE__)
-
 struct Address {
   int id;
   int set;
