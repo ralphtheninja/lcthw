@@ -238,6 +238,20 @@ void Database_get(struct Connection *conn, int id)
   }
 }
 
+void Database_find(struct Connection *conn, const char *query)
+{
+  struct Database *db = conn->db;
+
+  for (int i = 0; i < db->max_rows; i++) {
+    struct Address *addr = &db->rows[i];
+    if (addr->set) {
+      if (strstr(addr->name, query) || strstr(addr->email, query)) {
+        Address_print(addr);
+      }
+    }
+  }
+}
+
 void Database_delete(struct Connection *conn, int id)
 {
   struct Database *db = conn->db;
@@ -285,6 +299,14 @@ int main(int argc, char *argv[])
       int max_data = atoi(argv[4]);
       Database_create(conn, max_rows, max_data);
       Database_write(conn);
+      break;
+
+    case 'f':
+      if (argc != 4) {
+        die("Need a query string", conn);
+      }
+
+      Database_find(conn, argv[3]);
       break;
 
     case 'g':
