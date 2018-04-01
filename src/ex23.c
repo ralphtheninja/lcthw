@@ -99,7 +99,6 @@ int main(int argc, char **argv)
 
   // set up the from to have some stuff
   memset(from, 'x', LENGTH);
-  log_info("from after memset: %s", from);
   check(valid_copy(from, LENGTH, 'x'), "from not initialized right");
 
   // set it to a failure mode
