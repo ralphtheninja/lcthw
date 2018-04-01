@@ -6,28 +6,30 @@
 
 int zeds_device(char *from, char *to, int count)
 {
-  int n = (count + 7) / 8;
+  {
+    int n = (count + 7) / 8;
 
-  switch (count % 8) {
-    case 0:
-  again: *to++ = *from++;
-    case 7:
-      *to++ = *from++;
-    case 6:
-      *to++ = *from++;
-    case 5:
-      *to++ = *from++;
-    case 4:
-      *to++ = *from++;
-    case 3:
-      *to++ = *from++;
-    case 2:
-      *to++ = *from++;
-    case 1:
-      *to++ = *from++;
-      if (--n > 0) {
-        goto again;
-      }
+    switch (count % 8) {
+      case 0:
+again: *to++ = *from++;
+      case 7:
+        *to++ = *from++;
+      case 6:
+        *to++ = *from++;
+      case 5:
+        *to++ = *from++;
+      case 4:
+        *to++ = *from++;
+      case 3:
+        *to++ = *from++;
+      case 2:
+        *to++ = *from++;
+      case 1:
+        *to++ = *from++;
+        if (--n > 0) {
+          goto again;
+        }
+    }
   }
 
   return count;
@@ -35,27 +37,29 @@ int zeds_device(char *from, char *to, int count)
 
 int duffs_device(char *from, char *to, int count)
 {
-  int n = (count + 7) / 8;
+  {
+    int n = (count + 7) / 8;
 
-  switch (count % 8) {
-  case 0:
-    do {
-      *to++ = *from++;
-    case 7:
-      *to++ = *from++;
-    case 6:
-      *to++ = *from++;
-    case 5:
-      *to++ = *from++;
-    case 4:
-      *to++ = *from++;
-    case 3:
-      *to++ = *from++;
-    case 2:
-      *to++ = *from++;
-    case 1:
-      *to++ = *from++;
-    } while (--n > 0);
+    switch (count % 8) {
+      case 0:
+        do {
+          *to++ = *from++;
+          case 7:
+          *to++ = *from++;
+          case 6:
+          *to++ = *from++;
+          case 5:
+          *to++ = *from++;
+          case 4:
+          *to++ = *from++;
+          case 3:
+          *to++ = *from++;
+          case 2:
+          *to++ = *from++;
+          case 1:
+          *to++ = *from++;
+        } while (--n > 0);
+    }
   }
 
   return count;
@@ -91,8 +95,11 @@ int main(int argc, char **argv)
   char to[LENGTH] = { 'c' };
   int rc = 0;
 
+  log_info("Initial values, from: %s to: %s", from, to);
+
   // set up the from to have some stuff
   memset(from, 'x', LENGTH);
+  log_info("from after memset: %s", from);
   check(valid_copy(from, LENGTH, 'x'), "from not initialized right");
 
   // set it to a failure mode
