@@ -1,1 +1,4 @@
 test.db
+*.o
+ex22_main
+getenv
