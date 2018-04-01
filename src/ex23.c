@@ -2,7 +2,7 @@
 #include <string.h>
 #include "dbg.h"
 
-int duffs_device(char *from, char *to, int count)
+int zeds_device(char *from, char *to, int count)
 {
   int n = (count + 7) / 8;
 
@@ -31,7 +31,7 @@ int duffs_device(char *from, char *to, int count)
   return count;
 }
 
-int zeds_device(char *from, char *to, int count)
+int duffs_device(char *from, char *to, int count)
 {
   int n = (count + 7) / 8;
 
